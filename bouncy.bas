@@ -23,8 +23,9 @@
 340 return
 
 400 rem wait
-410 for t = 1 to 10 : next
-420 return
+410 when = ti + 1
+420 if ti <= when goto 420
+430 return
 
 500 rem kernal plot routine
 510 poke 781, y : poke 782, x : poke 783, 0
