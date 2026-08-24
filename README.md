@@ -1,5 +1,5 @@
 # BouncyBasic
-Bouncing ball written in Commodore BASIC
+Bouncing ball written in Commodore BASIC.  The PRG is binary portable for VIC-20 and Commodore 64.
 
 
 # Building
