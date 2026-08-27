@@ -1,25 +1,28 @@
 10 print "{clr}{home}"
 15 gosub 700 : rem setup for commodore model
 20 gosub 600 : rem screen dimensions
-30 x = 1 : y = 1
-40 dx = 1 : dy = 1
-50 gosub 200 : rem draw ball
-60 gosub 400 : rem sleep
-70 gosub 300 : rem clear ball
-80 x = x + dx
+30 x = 1 : y = 1    : rem ball coordinates
+35 px = x : py = y  : rem ball previous coordinates
+40 dx = 1 : dy = 1  : rem ball vector
+50 gosub 300 : rem clear ball
+60 gosub 200 : rem draw ball
+70 gosub 400 : rem sleep
+80 px = x : x = x + dx
 90 if x <= 0 or x >= xmax then dx = -dx
-100 y = y + dy
+100 py = y : y = y + dy
 110 if y <= 0 or y >= ymax then dy = -dy
 120 goto 50
 
 
 200 rem draw ball
-210 gosub 500
-220 poke rb, 113 : sys 65490
-230 return
+210 poke rb + 1, y : poke rb + 2, x : poke rb + 3, 0
+220 sys 65520
+230 poke rb, 113 : sys 65490
+240 return
 
 300 rem clear ball
-310 gosub 500
+310 poke rb + 1, py : poke rb + 2, px : poke rb + 3, 0
+320 sys 65520
 330 poke rb, 32 : sys 65490
 340 return
 
@@ -27,11 +30,6 @@
 410 when = ti + 1
 420 if ti <= when goto 420
 430 return
-
-500 rem kernal plot routine
-510 poke rb + 1, y : poke rb + 2, x : poke rb + 3, 0
-520 sys 65520
-530 return
 
 600 rem kernal screen routine
 610 sys 65517
