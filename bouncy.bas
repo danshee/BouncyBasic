@@ -8,9 +8,9 @@
 60 gosub 200 : rem draw ball
 70 gosub 400 : rem sleep
 80 px = x : x = x + dx
-90 if x <= 0 or x >= xmax then dx = -dx
+90 if x = 0 or x = xmax then dx = -dx
 100 py = y : y = y + dy
-110 if y <= 0 or y >= ymax then dy = -dy
+110 if y = 0 or y = ymax then dy = -dy
 120 goto 50
 
 
